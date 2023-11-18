@@ -30,7 +30,7 @@ public class ClienteServiceImp implements ClienteService{
 
     @Override
     public Cliente actualizarCliente(Cliente cliente) {
-        Cliente clienteEncontrado= clienteRepository.findById(cliente.getCliente_id()).orElse(null);
+        Cliente clienteEncontrado= clienteRepository.findById(cliente.getClienteId()).orElse(null);
         if (clienteEncontrado!=null){
             clienteEncontrado.setNombre(cliente.getNombre());
             clienteEncontrado.setApellido(cliente.getApellido());

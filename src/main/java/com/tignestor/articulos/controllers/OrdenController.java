@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RequestMapping("api/ordenes")
 @RestController
@@ -16,13 +15,14 @@ public class OrdenController {
     @Autowired
     OrdenService ordenService;
 
-    @PostMapping
-    public ResponseEntity<Orden> crearOrden(@RequestBody Orden orden){
 
+    @PostMapping("/crear")
+    public ResponseEntity<Boolean> crearOrden(@RequestBody Orden orden){
         try {
-            return ResponseEntity.status(HttpStatus.CREATED).body(ordenService.crearOrden(orden));
+            ordenService.crearOrden(orden);
+            return ResponseEntity.status(HttpStatus.CREATED).body(Boolean.TRUE);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Boolean.FALSE);
         }
     }
 }

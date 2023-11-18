@@ -1,17 +1,17 @@
 package com.tignestor.articulos.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-@Data
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -19,21 +19,21 @@ import java.util.UUID;
 public class Orden {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orden_id;
+    private Long ordenId;
 
-    private String codigo_orden=generarCodUnico();
+    private String codigoOrden=generarCodUnico();
 
     private Date fecha;
 
     @ManyToOne
-    @JoinColumn(name = "cliente_id")
+    @JoinColumn(name = "clienteId")
     private Cliente cliente;
 
     @ManyToMany
     @JoinTable(
-            name = "orden_articulo",
-            joinColumns = @JoinColumn(name = "orden_id"),
-            inverseJoinColumns = @JoinColumn(name = "artic_id")
+            name = "ordenArticulo",
+            joinColumns = @JoinColumn(name = "ordenId"),
+            inverseJoinColumns = @JoinColumn(name = "articId")
     )
     private Set<Articulo> articulos = new HashSet<>();
 

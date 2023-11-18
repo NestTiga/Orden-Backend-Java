@@ -6,5 +6,5 @@ import com.tignestor.articulos.models.Orden;
 import java.util.List;
 
 public interface OrdenService {
-    Orden crearOrden(Orden orden);
+    void crearOrden(Orden orden);
 }

@@ -1,16 +1,16 @@
 package com.tignestor.articulos.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-@Data
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -18,7 +18,7 @@ import java.util.UUID;
 public class Articulo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long artic_id;
+    private Long articId;
 
     private String codigo=generarCodigoJugador();
 
@@ -28,7 +28,8 @@ public class Articulo {
     private double precio;
 
     @ManyToMany(mappedBy = "articulos")
-    private Set<Orden> ordens = new HashSet<>();
+    @JsonIgnore
+    private Set<Orden> ordenes = new HashSet<>();
 
 
     public String generarCodigoJugador(){

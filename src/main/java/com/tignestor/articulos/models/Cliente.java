@@ -1,14 +1,14 @@
 package com.tignestor.articulos.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
-@Data
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -17,13 +17,14 @@ public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cliente_id;
+    private Long clienteId;
     @NotBlank(message = "Debe ingresar un nombre")
     private String nombre;
     @NotBlank(message = "Debe ingresar un apellido")
     private String apellido;
 
     @OneToMany(mappedBy = "cliente")
-    List<Orden> ordens;
+    @JsonIgnore
+    List<Orden> ordenes;
 
 }
