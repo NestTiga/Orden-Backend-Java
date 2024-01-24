@@ -1,11 +1,13 @@
 package com.tignestor.articulos.services;
 
+import com.tignestor.articulos.errors.NotFoundException;
 import com.tignestor.articulos.models.Cliente;
 import com.tignestor.articulos.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClienteServiceImp implements ClienteService{
@@ -19,8 +21,13 @@ public class ClienteServiceImp implements ClienteService{
     }
 
     @Override
-    public Cliente obtenerPorId(Long id) {
-        return clienteRepository.findById(id).orElse(null);
+    public Cliente obtenerPorId(Long id) throws NotFoundException {
+        Optional<Cliente> cliente=clienteRepository.findById(id);
+        if(cliente.isEmpty()){  // verifica si es un valor vacio o null
+            throw new NotFoundException("Cliente no encontrado"); //Envio de mensaje al dto
+        }else {
+            return cliente.get();
+        }
     }
 
     @Override
@@ -42,5 +49,15 @@ public class ClienteServiceImp implements ClienteService{
     @Override
     public void eliminarCliente(Long id) {
         clienteRepository.deleteById(id);
+    }
+
+    @Override
+    public Cliente encontrarPorNombre(String nombre) throws NotFoundException {
+        Optional<Cliente> cliente=clienteRepository.findByNombre(nombre);
+        if(cliente.isEmpty()){
+            throw new NotFoundException("No existe un cliente con ese nombre");
+        }
+        return cliente.get();
+
     }
 }
