@@ -17,16 +17,16 @@ import java.util.List;
 public class Cliente {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator", sequenceName = "my_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_cliente_generator")
+    @SequenceGenerator(name = "sq_cliente_generator", sequenceName = "cliente_sequence")
     private Long clienteId;
 
-    @NotNull
-    @NotBlank(message = "Debe ingresar un nombre")
+    @NotNull(message = "No se aceptan nulos en este campo")
+    @NotBlank(message = "Este campo no puede ser vacío")
     private String nombre;
 
-    @NotNull
-    @NotBlank(message = "Debe ingresar un apellido")
+    @NotNull(message = "No se aceptan nulos en este campo")
+    @NotBlank(message = "Este campo no puede ser vacío")
     private String apellido;
 
     @OneToMany(mappedBy = "cliente")

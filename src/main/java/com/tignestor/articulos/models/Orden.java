@@ -1,8 +1,10 @@
 package com.tignestor.articulos.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.util.Date;
@@ -18,12 +20,14 @@ import java.util.UUID;
 @Table(name="ordenes")
 public class Orden {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator", sequenceName = "my_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_orden_generator")
+    @SequenceGenerator(name = "sq_orden_generator", sequenceName = "orden_sequence")
     private Long ordenId;
 
     private String codigoOrden=generarCodUnico();
 
+    @NotNull(message = "No se acepta nulos en este campo")
+    @FutureOrPresent(message = "La fecha debe ser igual a la actual o futura")
     private Date fecha;
 
     @ManyToOne

@@ -5,6 +5,7 @@ import com.tignestor.articulos.models.Orden;
 import com.tignestor.articulos.repository.OrdenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Set;
@@ -14,17 +15,16 @@ public class OrdenServiceImp implements OrdenService{
     @Autowired
     OrdenRepository ordenRepository;
 
-    @Override
-    public void crearOrden(Orden orden) {
-        /*Set<Articulo> articulos = orden.getArticulos();
-        for (Articulo articulo: articulos) {
-            System.out.println("ID Articulo: " + articulo.getArticId());
-            System.out.println("Nombre: " + articulo.getNombre());
-        }*/
-        System.out.println("Objeto completo enviado desde el front: " + orden);
-        ordenRepository.save(orden);
-        var respuesta=ordenRepository.save(orden);
-        System.out.println("Respuesta de la base" + respuesta);
 
+    @Override
+    public List<Orden> listarOrdenes() {
+        return ordenRepository.findAll();
     }
+
+    @Transactional
+    @Override
+    public Orden guardarOrden(Orden orden) {
+        return ordenRepository.save(orden);
+    }
+
 }

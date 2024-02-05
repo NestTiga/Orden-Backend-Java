@@ -6,5 +6,9 @@ import com.tignestor.articulos.models.Orden;
 import java.util.List;
 
 public interface OrdenService {
-    void crearOrden(Orden orden);
+
+
+    List<Orden> listarOrdenes();
+
+    Orden guardarOrden(Orden orden);
 }
