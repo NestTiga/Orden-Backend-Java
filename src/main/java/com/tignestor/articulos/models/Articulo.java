@@ -17,7 +17,8 @@ import java.util.UUID;
 @Table(name="articulos")
 public class Articulo {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
+    @SequenceGenerator(name = "sequenceGenerator", sequenceName = "my_sequence")
     private Long articId;
 
     private String codigo=generarCodigoJugador();

@@ -1,11 +1,14 @@
 package com.tignestor.articulos.controllers;
 
 import com.tignestor.articulos.errors.NotFoundException;
+import com.tignestor.articulos.errors.dto.ErrorMessage;
 import com.tignestor.articulos.models.Cliente;
 import com.tignestor.articulos.services.ClienteService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,8 +34,9 @@ public class ClienteController {
     }
 
     @PostMapping
-    public Cliente crearCliente(@RequestBody Cliente cliente){
-        return clienteService.crearCliente(cliente);
+    public ResponseEntity<Cliente> crearCliente(@Valid @RequestBody Cliente cliente){
+        return ResponseEntity.status(HttpStatus.CREATED)
+                    .body(clienteService.crearCliente(cliente));
     }
 
     @DeleteMapping(value = "/{id}")
