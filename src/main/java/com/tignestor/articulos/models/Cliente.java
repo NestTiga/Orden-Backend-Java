@@ -12,8 +12,10 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Entity
 @Table(name="clientes")
+@Builder
 public class Cliente {
 
     @Id
