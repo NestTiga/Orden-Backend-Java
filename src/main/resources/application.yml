@@ -1,0 +1,39 @@
+server:
+  port: 8080
+spring:
+  profiles:
+    active: dev
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    password: root
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/db_articulos_dev
+    username: postgres
+  jpa:
+    database: POSTGRESQL
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+---
+spring:
+  config:
+    activate:
+      on-profile: qa
+  datasource:
+    password: root
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/db_articulos_qa
+    username: postgres
+  jpa:
+    database: POSTGRESQL
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true

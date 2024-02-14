@@ -1,7 +1,6 @@
 package com.tignestor.articulos.controllers;
 
 import com.tignestor.articulos.errors.NotFoundException;
-import com.tignestor.articulos.errors.dto.ErrorMessage;
 import com.tignestor.articulos.models.Cliente;
 import com.tignestor.articulos.services.ClienteService;
 import jakarta.validation.Valid;
