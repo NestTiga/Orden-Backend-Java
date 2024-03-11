@@ -20,8 +20,14 @@ import java.util.UUID;
 @Table(name="ordenes")
 public class Orden {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_orden_generator")
-    @SequenceGenerator(name = "sq_orden_generator", sequenceName = "orden_sequence")
+    @SequenceGenerator(
+            name = "orden_sequence",
+            sequenceName = "orden_sequence"
+    )
+    @GeneratedValue(
+            generator = "orden_sequence",
+            strategy = GenerationType.SEQUENCE
+    )
     private Long ordenId;
 
     private String codigoOrden=generarCodUnico();

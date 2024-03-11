@@ -19,8 +19,14 @@ import java.util.List;
 public class Cliente {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_cliente_generator")
-    @SequenceGenerator(name = "sq_cliente_generator", sequenceName = "cliente_sequence")
+    @SequenceGenerator(
+            name = "cliente_sequence",
+            sequenceName = "cliente_sequence"
+    )
+    @GeneratedValue(
+            generator = "cliente_sequence",
+            strategy = GenerationType.SEQUENCE
+    )
     private Long clienteId;
 
     @NotNull(message = "No se aceptan nulos en este campo")
@@ -31,8 +37,5 @@ public class Cliente {
     @NotBlank(message = "Este campo no puede ser vacío")
     private String apellido;
 
-    @OneToMany(mappedBy = "cliente")
-    @JsonIgnore
-    List<Orden> ordenes;
 
 }
