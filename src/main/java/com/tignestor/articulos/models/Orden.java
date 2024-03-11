@@ -7,17 +7,14 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
-@Setter
-@Getter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name="ordenes")
+@Builder
 public class Orden {
     @Id
     @SequenceGenerator(
@@ -42,11 +39,11 @@ public class Orden {
 
     @ManyToMany
     @JoinTable(
-            name = "ordenArticulo",
-            joinColumns = @JoinColumn(name = "ordenId"),
-            inverseJoinColumns = @JoinColumn(name = "articId")
+            name = "orden_articulo_map",
+            joinColumns = @JoinColumn(name = "orden_id", referencedColumnName = "ordenId"),
+            inverseJoinColumns = @JoinColumn(name = "articulo_id", referencedColumnName = "articId")
     )
-    private Set<Articulo> articulos = new HashSet<>();
+    private List<Articulo> articuloList;
 
     public String generarCodUnico(){
         UUID uuid = UUID.randomUUID();
