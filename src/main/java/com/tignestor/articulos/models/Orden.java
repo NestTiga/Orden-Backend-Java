@@ -3,7 +3,6 @@ package com.tignestor.articulos.models;
 import jakarta.persistence.*;
 
 import jakarta.validation.constraints.FutureOrPresent;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -33,11 +32,18 @@ public class Orden {
     @FutureOrPresent(message = "La fecha debe ser igual a la actual o futura")
     private Date fecha;
 
-    @ManyToOne
-    @JoinColumn(name = "clienteId")
+    @ManyToOne(
+            fetch = FetchType.EAGER
+    )
+    @JoinColumn(
+            name = "cliente_id",
+            referencedColumnName = "clienteId"
+    )
     private Cliente cliente;
 
-    @ManyToMany
+    @ManyToMany(
+            fetch = FetchType.EAGER
+    )
     @JoinTable(
             name = "orden_articulo_map",
             joinColumns = @JoinColumn(name = "orden_id", referencedColumnName = "ordenId"),

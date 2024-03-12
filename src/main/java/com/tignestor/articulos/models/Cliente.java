@@ -6,13 +6,10 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-import java.util.List;
 
-@Setter
-@Getter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Entity
 @Table(name="clientes")
 @Builder
