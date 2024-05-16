@@ -1,7 +1,7 @@
 package com.tignestor.articulos.repository;
 
-import com.tignestor.articulos.dao.repositories.ClienteRepository;
-import com.tignestor.articulos.model.entities.Cliente;
+import com.tignestor.articulos.dao.repositories.CustomerRepository;
+import com.tignestor.articulos.model.entities.Customer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,28 +13,28 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
-class ClienteRepositoryTest {
+class CustomerRepositoryTest {
 
     @Autowired
-    ClienteRepository clienteRepository;
+    CustomerRepository customerRepository;
     @Autowired
     TestEntityManager testEntityManager;
 
     @BeforeEach
     void setUp() {
-        Cliente cliente=
-                Cliente.builder()
+        Customer customer =
+                Customer.builder()
                         .nombre("Edison")
                         .apellido("Pingos")
                         .build();
-        testEntityManager.persist(cliente);
+        testEntityManager.persist(customer);
     }
 
-    // Prueba unitaria en caso de encontrar al cliente
+    // Prueba unitaria en caso de encontrar al customer
     @Test
     public void findByNombreFound(){
-        Optional<Cliente> cliente= clienteRepository.findByNombre("Edison");
+        Optional<Customer> cliente= customerRepository.findByNombre("Edison");
         assertEquals(cliente.get().getNombre(),"Edison");
-        System.out.println("El cliente encontrado es: " + cliente.get());
+        System.out.println("El customer encontrado es: " + cliente.get());
     }
 }

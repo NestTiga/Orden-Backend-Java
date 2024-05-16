@@ -12,7 +12,7 @@ import lombok.*;
 @Entity
 @Table(name="clientes")
 @Builder
-public class Cliente {
+public class Customer {
 
     @Id
     @SequenceGenerator(

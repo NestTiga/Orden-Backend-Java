@@ -39,7 +39,7 @@ public class Orden {
             name = "cliente_id",
             referencedColumnName = "clienteId"
     )
-    private Cliente cliente;
+    private Customer customer;
 
     @ManyToMany(
             fetch = FetchType.EAGER

@@ -1,7 +1,7 @@
 package com.tignestor.articulos.controllers.v1;
 
 import com.tignestor.articulos.errors.NotFoundException;
-import com.tignestor.articulos.model.entities.Cliente;
+import com.tignestor.articulos.model.entities.Customer;
 import com.tignestor.articulos.services.ClienteService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,28 +13,28 @@ import java.util.List;
 
 @RequestMapping("/api")
 @RestController
-public class ClienteController {
+public class CustomerController {
     @Autowired
     ClienteService clienteService;
 
     @GetMapping("/listarClientes")
-    public List<Cliente> listarClientes(){
+    public List<Customer> listarClientes(){
         return clienteService.obtenerClientes();
     }
     @GetMapping("/clientePorId/{id}")
-    public Cliente listarClientePorId(@PathVariable Long id) throws NotFoundException {
+    public Customer listarClientePorId(@PathVariable Long id) throws NotFoundException {
         return clienteService.obtenerPorId(id);
     }
 
     @GetMapping("/clientePorNombre/{name}")
-    public Cliente listarClientePorNombre(@PathVariable String name) throws NotFoundException{
+    public Customer listarClientePorNombre(@PathVariable String name) throws NotFoundException{
         return clienteService.encontrarPorNombre(name);
     }
 
     @PostMapping("/crearCliente")
-    public ResponseEntity<Cliente> crearCliente(@Valid @RequestBody Cliente cliente){
+    public ResponseEntity<Customer> crearCliente(@Valid @RequestBody Customer customer){
         return ResponseEntity.status(HttpStatus.CREATED)
-                    .body(clienteService.crearCliente(cliente));
+                    .body(clienteService.crearCliente(customer));
     }
 
     @DeleteMapping("/eliminarClientePorId/{id}")
@@ -43,8 +43,8 @@ public class ClienteController {
     }
 
     @PutMapping("/actualizarCliente")
-    public Cliente actualizarCliente(@Valid @RequestBody Cliente cliente){
-        return clienteService.actualizarCliente(cliente);
+    public Customer actualizarCliente(@Valid @RequestBody Customer customer){
+        return clienteService.actualizarCliente(customer);
     }
 
 }

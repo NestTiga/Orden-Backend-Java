@@ -1,8 +1,8 @@
 package com.tignestor.articulos.services;
 
+import com.tignestor.articulos.dao.repositories.CustomerRepository;
 import com.tignestor.articulos.errors.NotFoundException;
-import com.tignestor.articulos.model.entities.Cliente;
-import com.tignestor.articulos.dao.repositories.ClienteRepository;
+import com.tignestor.articulos.model.entities.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,49 +13,49 @@ import java.util.Optional;
 public class ClienteServiceImp implements ClienteService{
 
     @Autowired
-    ClienteRepository clienteRepository;
+    CustomerRepository customerRepository;
 
     @Override
-    public List<Cliente> obtenerClientes() {
-        return clienteRepository.findAll();
+    public List<Customer> obtenerClientes() {
+        return customerRepository.findAll();
     }
 
     @Override
-    public Cliente obtenerPorId(Long id) throws NotFoundException {
-        Optional<Cliente> cliente=clienteRepository.findById(id);
+    public Customer obtenerPorId(Long id) throws NotFoundException {
+        Optional<Customer> cliente= customerRepository.findById(id);
         if(cliente.isEmpty()){  // verifica si es un valor vacio o null
-            throw new NotFoundException("Cliente no encontrado"); //Envio de mensaje al dto
+            throw new NotFoundException("Customer no encontrado"); //Envio de mensaje al dto
         }else {
             return cliente.get();
         }
     }
 
     @Override
-    public Cliente crearCliente(Cliente cliente) {
-        return clienteRepository.save(cliente);
+    public Customer crearCliente(Customer customer) {
+        return customerRepository.save(customer);
     }
 
     @Override
-    public Cliente actualizarCliente(Cliente cliente) {
-        Cliente clienteEncontrado= clienteRepository.findById(cliente.getClienteId()).orElse(null);
-        if (clienteEncontrado!=null){
-            clienteEncontrado.setNombre(cliente.getNombre());
-            clienteEncontrado.setApellido(cliente.getApellido());
-            return clienteRepository.save(clienteEncontrado);
+    public Customer actualizarCliente(Customer customer) {
+        Customer customerEncontrado = customerRepository.findById(customer.getClienteId()).orElse(null);
+        if (customerEncontrado !=null){
+            customerEncontrado.setNombre(customer.getNombre());
+            customerEncontrado.setApellido(customer.getApellido());
+            return customerRepository.save(customerEncontrado);
         }
         return null;
     }
 
     @Override
     public void eliminarCliente(Long id) {
-        clienteRepository.deleteById(id);
+        customerRepository.deleteById(id);
     }
 
     @Override
-    public Cliente encontrarPorNombre(String nombre) throws NotFoundException {
-        Optional<Cliente> cliente=clienteRepository.findByNombre(nombre);
+    public Customer encontrarPorNombre(String nombre) throws NotFoundException {
+        Optional<Customer> cliente= customerRepository.findByNombre(nombre);
         if(cliente.isEmpty()){
-            throw new NotFoundException("No existe un cliente con ese nombre");
+            throw new NotFoundException("No existe un customer con ese nombre");
         }
         return cliente.get();
 

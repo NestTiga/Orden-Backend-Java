@@ -1,6 +1,6 @@
 package com.tignestor.articulos.controllers;
 
-import com.tignestor.articulos.model.entities.Cliente;
+import com.tignestor.articulos.model.entities.Customer;
 import com.tignestor.articulos.services.ClienteService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,19 +16,19 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest
-class ClienteControllerTest {
+class CustomerControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
     @MockBean
     private ClienteService clienteService;
 
-    private Cliente cliente;
+    private Customer customerController;
 
     @BeforeEach
     void setUp() {
-        cliente =
-                Cliente.builder()
+        customerController =
+                Customer.builder()
                         .clienteId(5l)
                         .nombre("Néstor")
                         .apellido("Tigasi")
@@ -39,9 +39,9 @@ class ClienteControllerTest {
     public void crearClienteTest() throws Exception {
         String nombre="Néstor";
 
-        Mockito.when(clienteService.encontrarPorNombre(nombre)).thenReturn(cliente);
+        Mockito.when(clienteService.encontrarPorNombre(nombre)).thenReturn(customerController);
         mockMvc.perform(get("/api/clientePorNombre/Néstor").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.nombre").value(cliente.getNombre()));
+                .andExpect(jsonPath("$.nombre").value(customerController.getNombre()));
     }
 }
