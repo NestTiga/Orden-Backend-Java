@@ -1,6 +1,6 @@
-package com.tignestor.articulos.repository;
+package com.tignestor.articulos.dao.repositories;
 
-import com.tignestor.articulos.models.Articulo;
+import com.tignestor.articulos.model.entities.Articulo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

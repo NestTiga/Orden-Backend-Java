@@ -1,14 +1,12 @@
 package com.tignestor.articulos.services;
 
-import com.tignestor.articulos.models.Articulo;
-import com.tignestor.articulos.models.Orden;
-import com.tignestor.articulos.repository.OrdenRepository;
+import com.tignestor.articulos.model.entities.Orden;
+import com.tignestor.articulos.dao.repositories.OrdenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class OrdenServiceImp implements OrdenService{

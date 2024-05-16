@@ -1,6 +1,7 @@
 package com.tignestor.articulos.repository;
 
-import com.tignestor.articulos.models.Cliente;
+import com.tignestor.articulos.dao.repositories.ClienteRepository;
+import com.tignestor.articulos.model.entities.Cliente;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

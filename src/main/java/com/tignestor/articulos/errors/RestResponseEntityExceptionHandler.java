@@ -1,6 +1,6 @@
 package com.tignestor.articulos.errors;
 
-import com.tignestor.articulos.errors.dto.ErrorMessage;
+import com.tignestor.articulos.model.dto.ErrorMessage;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;

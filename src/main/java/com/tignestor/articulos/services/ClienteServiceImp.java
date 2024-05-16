@@ -1,8 +1,8 @@
 package com.tignestor.articulos.services;
 
 import com.tignestor.articulos.errors.NotFoundException;
-import com.tignestor.articulos.models.Cliente;
-import com.tignestor.articulos.repository.ClienteRepository;
+import com.tignestor.articulos.model.entities.Cliente;
+import com.tignestor.articulos.dao.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 package com.tignestor.articulos.services;
 
 import com.tignestor.articulos.errors.NotFoundException;
-import com.tignestor.articulos.models.Cliente;
+import com.tignestor.articulos.model.entities.Cliente;
 
 import java.util.List;
 

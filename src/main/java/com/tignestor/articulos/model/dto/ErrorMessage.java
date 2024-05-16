@@ -1,4 +1,4 @@
-package com.tignestor.articulos.errors.dto;
+package com.tignestor.articulos.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

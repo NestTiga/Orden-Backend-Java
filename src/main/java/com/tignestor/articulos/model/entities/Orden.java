@@ -1,4 +1,4 @@
-package com.tignestor.articulos.models;
+package com.tignestor.articulos.model.entities;
 
 import jakarta.persistence.*;
 

@@ -1,6 +1,6 @@
 package com.tignestor.articulos.services;
 
-import com.tignestor.articulos.models.Orden;
+import com.tignestor.articulos.model.entities.Orden;
 
 
 import java.util.List;

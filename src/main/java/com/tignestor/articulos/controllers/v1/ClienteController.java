@@ -1,7 +1,7 @@
-package com.tignestor.articulos.controllers;
+package com.tignestor.articulos.controllers.v1;
 
 import com.tignestor.articulos.errors.NotFoundException;
-import com.tignestor.articulos.models.Cliente;
+import com.tignestor.articulos.model.entities.Cliente;
 import com.tignestor.articulos.services.ClienteService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

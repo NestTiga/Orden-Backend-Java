@@ -1,7 +1,6 @@
-package com.tignestor.articulos.controllers;
+package com.tignestor.articulos.controllers.v1;
 
-import com.tignestor.articulos.models.Articulo;
-import com.tignestor.articulos.models.Orden;
+import com.tignestor.articulos.model.entities.Orden;
 import com.tignestor.articulos.services.OrdenService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

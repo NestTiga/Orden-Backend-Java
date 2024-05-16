@@ -1,7 +1,7 @@
 package com.tignestor.articulos.services;
 
-import com.tignestor.articulos.models.Articulo;
-import com.tignestor.articulos.repository.ArticuloRepository;
+import com.tignestor.articulos.model.entities.Articulo;
+import com.tignestor.articulos.dao.repositories.ArticuloRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

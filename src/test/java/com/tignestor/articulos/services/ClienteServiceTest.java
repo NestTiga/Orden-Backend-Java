@@ -1,8 +1,8 @@
 package com.tignestor.articulos.services;
 
 import com.tignestor.articulos.errors.NotFoundException;
-import com.tignestor.articulos.models.Cliente;
-import com.tignestor.articulos.repository.ClienteRepository;
+import com.tignestor.articulos.model.entities.Cliente;
+import com.tignestor.articulos.dao.repositories.ClienteRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

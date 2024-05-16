@@ -1,6 +1,6 @@
 package com.tignestor.articulos.controllers;
 
-import com.tignestor.articulos.models.Cliente;
+import com.tignestor.articulos.model.entities.Cliente;
 import com.tignestor.articulos.services.ClienteService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
